@@ -1,0 +1,40 @@
+#include<stdio.h>
+int binary(int a[], int k, int first, int last);
+int main()
+{
+	int n, i, a[10], key;
+	scanf("%d", &n);
+	for(i=0; i<n; i++)
+	scanf("%d", &a[i]);
+	scanf("%d", &key);
+	int first=0;
+	int last= n-1;
+	
+	int result= binary(a, key, first, last);
+	if(result==1)
+	{
+		printf("not found");
+	}
+	else
+	{
+		printf("found");
+	}
+	return 0;
+}
+int binary(int a[], int k, int first, int last)
+{
+	int m;
+	if(first>last)
+	return 1;
+	m= (first+ last)/2;
+	if(a[m]==k)
+	return m;
+	if(a[m]<k)
+	{
+		return binary(a, k, m+1, last);
+	}
+	else
+	{
+		return binary(a, k, first,  m-1);
+	}
+}
